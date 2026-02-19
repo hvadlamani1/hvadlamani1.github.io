@@ -424,6 +424,22 @@ a {
     line-height: 1.7;
 }
 
+.exp-item-bullets {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.exp-item-bullets li {
+    margin-bottom: 6px;
+}
+
+.exp-item-bullets li:last-child {
+    margin-bottom: 0;
+}
+
 /* ========================================
    PROJECTS SECTION — Alternating Layout
    ======================================== */
