@@ -214,13 +214,11 @@ a {
     height: 72px;
     border-radius: 50%;
     border: 2px solid var(--accent);
-    object-fit: cover;
-    -webkit-object-fit: cover;
-    object-position: center 20%;
-    -webkit-object-position: center 20%;
+    background-size: cover;
+    background-position: center 20%;
+    background-repeat: no-repeat;
     flex-shrink: 0;
     margin-top: 6px;
-    overflow: hidden;
 }
 
 .hero-avatar-placeholder {
@@ -636,13 +634,10 @@ a {
     height: 120px;
     border-radius: 50%;
     border: 3px solid var(--accent);
-    object-fit: cover;
-    -webkit-object-fit: cover;
-    object-position: center 20%;
-    -webkit-object-position: center 20%;
+    background-size: cover;
+    background-position: center 20%;
+    background-repeat: no-repeat;
     margin: 0 auto 20px;
-    display: block;
-    overflow: hidden;
 }
 
 .contact-avatar-placeholder {
