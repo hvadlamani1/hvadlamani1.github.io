@@ -215,9 +215,12 @@ a {
     border-radius: 50%;
     border: 2px solid var(--accent);
     object-fit: cover;
+    -webkit-object-fit: cover;
     object-position: center 20%;
+    -webkit-object-position: center 20%;
     flex-shrink: 0;
     margin-top: 6px;
+    overflow: hidden;
 }
 
 .hero-avatar-placeholder {
@@ -634,9 +637,12 @@ a {
     border-radius: 50%;
     border: 3px solid var(--accent);
     object-fit: cover;
+    -webkit-object-fit: cover;
     object-position: center 20%;
+    -webkit-object-position: center 20%;
     margin: 0 auto 20px;
     display: block;
+    overflow: hidden;
 }
 
 .contact-avatar-placeholder {
@@ -757,7 +763,6 @@ a {
 
     /* Mobile dropdown */
     .mobile-menu {
-        display: none;
         position: fixed;
         top: 64px;
         left: 12px;
@@ -768,13 +773,21 @@ a {
         border: 1px solid var(--border);
         border-radius: var(--radius-lg);
         padding: 12px;
+        display: flex;
         flex-direction: column;
         gap: 4px;
         z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
     }
 
     .mobile-menu.open {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .mobile-menu .nav-link {

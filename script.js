@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const roles = [
       'Software Engineer',
       'Data Scientist',
-      'AI Engineer',
-      'Data Science Researcher'
+      'AI Engineer'
     ];
     let roleIndex = 0;
     let charIndex = 0;
