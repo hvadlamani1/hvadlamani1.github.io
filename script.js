@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const roles = [
       'Software Engineer',
       'Data Scientist',
-      'AI Engineer'
+      'AI Engineer',
+      'Data Science Researcher'
     ];
     let roleIndex = 0;
     let charIndex = 0;
@@ -33,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentRole = roles[roleIndex];
 
       if (!isDeleting) {
-        // Typing
         typedEl.textContent = currentRole.substring(0, charIndex + 1);
         charIndex++;
 
@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(typeLoop, typeSpeed);
       } else {
-        // Deleting
         typedEl.textContent = currentRole.substring(0, charIndex - 1);
         charIndex--;
 
@@ -139,70 +138,122 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Floating Stars ---------- */
-  const canvas = document.getElementById('stars-canvas');
+  /* ---------- Animated Grid Background ---------- */
+  const canvas = document.getElementById('grid-canvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    let stars = [];
-    const STAR_COUNT = 50;
+    const GRID_SIZE = 40;
+    const LINE_COLOR = 'rgba(168, 85, 247, 0.06)';
+    const PULSE_COLOR_BASE = [168, 85, 247];
+    let time = 0;
+    let pulses = [];
 
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
 
-    function createStars() {
-      stars = [];
-      for (let i = 0; i < STAR_COUNT; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.5 + 0.3,
-          alpha: Math.random() * 0.5 + 0.1,
-          dx: (Math.random() - 0.5) * 0.15,
-          dy: (Math.random() - 0.5) * 0.15,
-          twinkleSpeed: Math.random() * 0.01 + 0.003,
-          twinklePhase: Math.random() * Math.PI * 2
+    // Spawn a pulse periodically
+    function spawnPulse() {
+      const isHorizontal = Math.random() > 0.5;
+      if (isHorizontal) {
+        const row = Math.floor(Math.random() * (canvas.height / GRID_SIZE));
+        pulses.push({
+          type: 'h',
+          row: row,
+          x: -100,
+          speed: 1.5 + Math.random() * 1.5,
+          alpha: 0.12 + Math.random() * 0.08
+        });
+      } else {
+        const col = Math.floor(Math.random() * (canvas.width / GRID_SIZE));
+        pulses.push({
+          type: 'v',
+          col: col,
+          y: -100,
+          speed: 1 + Math.random() * 1.5,
+          alpha: 0.12 + Math.random() * 0.08
         });
       }
     }
 
-    function drawStars() {
+    function drawGrid() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      stars.forEach(star => {
-        // Update position
-        star.x += star.dx;
-        star.y += star.dy;
+      // Draw static grid lines
+      ctx.strokeStyle = LINE_COLOR;
+      ctx.lineWidth = 0.5;
 
-        // Wrap around edges
-        if (star.x < 0) star.x = canvas.width;
-        if (star.x > canvas.width) star.x = 0;
-        if (star.y < 0) star.y = canvas.height;
-        if (star.y > canvas.height) star.y = 0;
-
-        // Twinkle effect
-        star.twinklePhase += star.twinkleSpeed;
-        const twinkle = Math.sin(star.twinklePhase) * 0.3 + 0.7;
-        const finalAlpha = star.alpha * twinkle;
-
-        // Draw star
+      // Vertical lines
+      for (let x = 0; x <= canvas.width; x += GRID_SIZE) {
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200, 180, 255, ${finalAlpha})`;
-        ctx.fill();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+
+      // Horizontal lines
+      for (let y = 0; y <= canvas.height; y += GRID_SIZE) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+
+      // Draw animated pulses traveling along grid lines
+      pulses.forEach(pulse => {
+        const [r, g, b] = PULSE_COLOR_BASE;
+        const gradLen = 200;
+
+        if (pulse.type === 'h') {
+          const y = pulse.row * GRID_SIZE;
+          const grad = ctx.createLinearGradient(pulse.x - gradLen, y, pulse.x + gradLen, y);
+          grad.addColorStop(0, `rgba(${r},${g},${b}, 0)`);
+          grad.addColorStop(0.5, `rgba(${r},${g},${b}, ${pulse.alpha})`);
+          grad.addColorStop(1, `rgba(${r},${g},${b}, 0)`);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(pulse.x - gradLen, y);
+          ctx.lineTo(pulse.x + gradLen, y);
+          ctx.stroke();
+          pulse.x += pulse.speed;
+        } else {
+          const x = pulse.col * GRID_SIZE;
+          const grad = ctx.createLinearGradient(x, pulse.y - gradLen, x, pulse.y + gradLen);
+          grad.addColorStop(0, `rgba(${r},${g},${b}, 0)`);
+          grad.addColorStop(0.5, `rgba(${r},${g},${b}, ${pulse.alpha})`);
+          grad.addColorStop(1, `rgba(${r},${g},${b}, 0)`);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(x, pulse.y - gradLen);
+          ctx.lineTo(x, pulse.y + gradLen);
+          ctx.stroke();
+          pulse.y += pulse.speed;
+        }
       });
 
-      requestAnimationFrame(drawStars);
+      // Remove pulses that have left the screen
+      pulses = pulses.filter(p => {
+        if (p.type === 'h') return p.x < canvas.width + 300;
+        return p.y < canvas.height + 300;
+      });
+
+      // Spawn new pulses at a steady rate
+      time++;
+      if (time % 90 === 0) spawnPulse();
+
+      requestAnimationFrame(drawGrid);
     }
 
     resize();
-    createStars();
-    drawStars();
+    // Seed a few initial pulses
+    for (let i = 0; i < 3; i++) spawnPulse();
+    drawGrid();
 
     window.addEventListener('resize', () => {
       resize();
-      createStars();
     });
   }
 

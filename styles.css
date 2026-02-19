@@ -53,16 +53,8 @@ body {
     position: relative;
 }
 
-/* ---------- DOT GRID BACKGROUND ---------- */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-    z-index: 0;
-}
+/* ---------- GRID BACKGROUND (rendered via canvas) ---------- */
+/* The grid is drawn on #grid-canvas by script.js */
 
 /* ---------- AMBIENT GLOWS ---------- */
 body::after {
@@ -207,7 +199,7 @@ a {
 }
 
 .hero-card {
-    padding: 48px;
+    padding: 32px;
 }
 
 .hero-profile {
@@ -223,7 +215,9 @@ a {
     border-radius: 50%;
     border: 2px solid var(--accent);
     object-fit: cover;
+    object-position: center 20%;
     flex-shrink: 0;
+    margin-top: 6px;
 }
 
 .hero-avatar-placeholder {
@@ -255,18 +249,17 @@ a {
 }
 
 .hero-greeting {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 16px;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
     color: var(--text-primary);
 }
 
 .hero-bio {
     font-size: 1.05rem;
     color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 32px;
-    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 24px;
 }
 
 .hero-socials {
@@ -473,17 +466,40 @@ a {
     width: 100%;
     aspect-ratio: 16 / 10;
     border-radius: var(--radius-md);
-    background: linear-gradient(135deg, var(--bg-card-alt), var(--bg-card));
+    background: linear-gradient(135deg, #1a1028 0%, #0d0d18 50%, #13101f 100%);
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 3.5rem;
     transition: transform var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.project-image-placeholder::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-glow-strong), transparent);
 }
 
 .project-image-wrapper:hover .project-image-placeholder {
     transform: scale(1.02);
+    border-color: var(--border-strong);
 }
 
 .project-info {
@@ -618,6 +634,7 @@ a {
     border-radius: 50%;
     border: 3px solid var(--accent);
     object-fit: cover;
+    object-position: center 20%;
     margin: 0 auto 20px;
     display: block;
 }
@@ -907,9 +924,9 @@ a {
 }
 
 /* ========================================
-   FLOATING STARS CANVAS
+   ANIMATED GRID CANVAS
    ======================================== */
-#stars-canvas {
+#grid-canvas {
     position: fixed;
     inset: 0;
     z-index: 0;
