@@ -989,6 +989,46 @@ footer { padding: 36px 0; border-top: 1px solid var(--line); font-size: 13.5px; 
 .chat-close svg { width: 16px; height: 16px; }
 .chat-close:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
 
+/* ---------- Hero: photo + social ---------- */
+.hero-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.hero-social {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-social a {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.hero-social a:hover {
+    color: var(--ink);
+    border-color: var(--accent-strong);
+    background: var(--accent-tint);
+    transform: translateY(-2px);
+}
+
+.hero-social a:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
+
+.hero-social svg { width: 18px; height: 18px; }
+
 /* ---------- Suggestions ---------- */
 .chat-suggest {
     display: flex;
