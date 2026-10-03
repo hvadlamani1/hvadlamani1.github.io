@@ -34,6 +34,7 @@
                 <a href="#experience" class="link">Experience</a>
                 <a href="#inference" class="link">Inference</a>
                 <a href="#projects" class="link">Projects</a>
+                <a href="#opensource" class="link">Open Source</a>
                 <a href="#content" class="link">Content</a>
                 <a href="#skills" class="link">Skills</a>
                 <a href="#contact" class="link">Contact</a>
@@ -550,6 +551,63 @@
                         data-count="6">Show 6 more projects</button>
                     <a class="btn btn-ghost" href="https://github.com/hvadlamani1" target="_blank" rel="noopener">All
                         repos on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== OPEN SOURCE ====== -->
+        <section id="opensource">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Open Source</div>
+                    <h2>Contributions to other people's projects</h2>
+                    <p>Tools for keeping AI agents safe and AI spend visible. I like picking up real issues in
+                        projects I'd use myself.</p>
+                </div>
+
+                <div class="os-grid reveal">
+                    <article class="proj-card os-card">
+                        <div class="os-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                            <span class="pr-status merged"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5v7M18 15.5V10a3 3 0 0 0-3-3h-3"/><path d="M14 4l-2 3 2 3"/></svg>Merged</span>
+                        </div>
+                        <div class="proj-tag">AI Agent Security</div>
+                        <h3>agentmetry</h3>
+                        <p class="os-about">A local-first flight recorder for AI coding agents. It watches the tool calls
+                            agents make (shell commands, API calls and more) and scans them for things that shouldn't be
+                            there, like credentials and secrets.</p>
+                        <div class="os-mine">
+                            <b>My contribution</b>
+                            <p>Added a data-layer protection: three detection rules that catch Stripe keys, Anthropic
+                                keys, and other LLM-provider API keys before they leak, with six tests including
+                                near-miss cases to avoid false alarms. Closed the open issue for it.</p>
+                        </div>
+                        <div class="chip-row"><span class="chip">Python</span><span class="chip">DLP rules</span><span
+                                class="chip">Regex</span><span class="chip">Testing</span></div>
+                        <a class="proj-link" href="https://github.com/blitzcrieg1/agentmetry/pull/126" target="_blank"
+                            rel="noopener">View pull request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
+
+                    <article class="proj-card os-card">
+                        <div class="os-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div>
+                            <span class="pr-status open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5v7M18 15.5V10a3 3 0 0 0-3-3h-3"/><path d="M14 4l-2 3 2 3"/></svg>Open PR</span>
+                        </div>
+                        <div class="proj-tag">LLM Cost Tracking · First contribution</div>
+                        <h3>llm-spend</h3>
+                        <p class="os-about">A command-line tool that tracks LLM usage and spend across Anthropic and
+                            OpenAI, using the providers' admin APIs or CSV exports.</p>
+                        <div class="os-mine">
+                            <b>My contribution</b>
+                            <p>Added Gemini and Vertex AI support: a converter that reshapes Google Cloud's billing
+                                export into llm-spend's format, and reports that now discover providers dynamically
+                                instead of assuming only two.</p>
+                        </div>
+                        <div class="chip-row"><span class="chip">Python</span><span class="chip">Gemini</span><span
+                                class="chip">GCP billing</span><span class="chip">CLI</span></div>
+                        <a class="proj-link" href="https://github.com/kliukovkin/llm-spend/pull/7" target="_blank"
+                            rel="noopener">View pull request <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
                 </div>
             </div>
         </section>
