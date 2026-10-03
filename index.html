@@ -1,414 +1,682 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hemanth Vadlamani — Portfolio</title>
+    <title>Hemanth Vadlamani — AI Forward Deployed Engineer</title>
     <meta name="description"
-        content="Hemanth Vadlamani — Software Engineer & Data Scientist. Building impactful solutions with modern technologies." />
-    <meta property="og:title" content="Hemanth Vadlamani — Portfolio" />
-    <meta property="og:description" content="Software Engineer & Data Scientist building impactful solutions." />
+        content="Hemanth Vadlamani — AI Forward Deployed Engineer at Sails Software. Multi-agent systems across GCP and AWS, and self-hosted LLM inference with vLLM and SGLang." />
+    <meta property="og:title" content="Hemanth Vadlamani — AI Forward Deployed Engineer" />
+    <meta property="og:description"
+        content="Multi-agent systems across multiple clouds and self-hosted open-source LLM inference." />
     <meta property="og:type" content="website" />
+    <script>
+        // Light is the default; only an explicit past choice switches to dark. Runs before paint to avoid a flash.
+        try {
+            var saved = localStorage.getItem('theme');
+            if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) { }
+    </script>
+    <meta name="theme-color" content="#f8f8f8" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-    <!-- ====== NAVIGATION — Floating Centered Pill ====== -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-links-desktop">
-            <a href="#home" class="nav-link active">Home</a>
-            <a href="#experience" class="nav-link">Experience</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#contact" class="nav-link">Contact</a>
+    <!-- ====== NAV ====== -->
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="#home" class="brand"><span class="brand-dot"></span>Hemanth Vadlamani</a>
+
+            <nav class="links" id="nav-links" aria-label="Primary">
+                <a href="#about" class="link">About</a>
+                <a href="#experience" class="link">Experience</a>
+                <a href="#inference" class="link">Inference</a>
+                <a href="#projects" class="link">Projects</a>
+                <a href="#content" class="link">Content</a>
+                <a href="#skills" class="link">Skills</a>
+                <a href="#contact" class="link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                    </svg>
+                </button>
+                <a href="assets/resume.pdf" target="_blank" rel="noopener" class="nav-cta">Resume</a>
+                <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Toggle menu"
+                    aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 7h16M4 12h16M4 17h16" />
+                    </svg>
+                </button>
+            </div>
         </div>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+    </header>
 
-    <!-- Mobile dropdown menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#contact" class="nav-link">Contact</a>
-    </div>
-
-    <!-- ====== HERO — Profile Card ====== -->
-    <section class="hero section" id="home">
-        <div class="container">
-            <div class="glow-card hero-card reveal">
-                <!-- Profile header -->
-                <div class="hero-profile">
-                    <div class="hero-avatar" style="background-image: url('assets/photo.jpg')" role="img"
-                        aria-label="Hemanth Vadlamani"></div>
+    <main>
+        <!-- ====== HERO ====== -->
+        <section class="hero" id="home">
+            <div class="hero-dots"></div>
+            <div class="wrap">
+                <div class="hero-inner">
                     <div>
-                        <div class="hero-name">Hemanth Vadlamani</div>
-                        <div class="hero-title">
-                            <span id="typed-role"></span><span class="typing-cursor">|</span>
-                        </div>
-                        <div class="hero-tagline">Worcester Polytechnic Institute • Computer Science & Data Science (May
-                            2026)</div>
-                    </div>
-                </div>
-
-                <!-- Greeting -->
-                <h1 class="hero-greeting" id="greeting-text">Hello There!</h1>
-
-                <!-- Bio -->
-                <p class="hero-bio">
-                    I'm a software engineer and data scientist passionate about building intelligent systems.
-                    My work spans full-stack development, machine learning, and data-driven applications that
-                    solve real-world problems. Currently seeking <strong style="color: var(--accent);">new grad
-                        opportunities starting May 2026</strong> in Software Engineering, Data Science, and AI/ML.
-                </p>
-
-                <!-- Social icons -->
-                <div class="hero-socials">
-                    <a href="https://github.com/hvadlamani1" target="_blank" rel="noopener" class="social-icon"
-                        aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com/in/hemanth-vadlamani/" target="_blank" rel="noopener"
-                        class="social-icon" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                            <rect x="2" y="9" width="4" height="12" />
-                            <circle cx="4" cy="4" r="2" />
-                        </svg>
-                    </a>
-                    <a href="https://x.com/" target="_blank" rel="noopener" class="social-icon"
-                        aria-label="X / Twitter">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                        </svg>
-                    </a>
-                    <a href="mailto:hvadlamani253@outlook.com" class="social-icon" aria-label="Email">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== DIVIDER ====== -->
-    <div class="section-divider">
-        <div class="divider-line"></div>
-    </div>
-
-    <!-- ====== EXPERIENCE — Tabs + Timeline ====== -->
-    <section class="experience section" id="experience">
-        <div class="container">
-            <!-- Tabs -->
-            <div class="exp-tabs reveal">
-                <button class="exp-tab active" data-tab="work">Experience</button>
-                <button class="exp-tab" data-tab="education">Education</button>
-                <button class="exp-tab" data-tab="extracurricular">Extracurricular</button>
-            </div>
-
-            <!-- Work -->
-            <div class="exp-content active" id="tab-work">
-                <div class="glow-card exp-card reveal highlight-card">
-                    <div class="exp-item">
-                        <h3 class="exp-item-title">Software Engineer Intern</h3>
-                        <div class="exp-item-meta">
-                            <span>📅 May 2025 – <i>Present</i></span>
-                            <span>🏢 Forward Advantage</span>
-                            <span>📍 Fresno, CA</span>
-                        </div>
-                        <p class="exp-item-desc">Built features for a healthcare image capture and data management app
-                            using .NET and SQL. Designed UI improvements and wrote a performance-optimized script to
-                            analyze 10M+ files, cutting runtime by 50%.</p>
-                    </div>
-                    <div class="exp-item">
-                        <h3 class="exp-item-title">Software Engineer Intern</h3>
-                        <div class="exp-item-meta">
-                            <span>📅 Apr 2023 – May 2023</span>
-                            <span>🏢 ZoomInfo</span>
-                            <span>📍 Waltham, MA</span>
-                        </div>
-                        <p class="exp-item-desc">Built a RAG-powered AI chatbot using OpenAI, LangChain, and Python that
-                            dynamically retrieved and synthesized answers from internal FAQ docs for customer support.
+                        <div class="status-pill"><span class="status-dot"></span>Now: AI Forward Deployed Engineer at
+                            Sails Software</div>
+                        <h1>Hemanth Vadlamani</h1>
+                        <div class="role">AI Forward Deployed Engineer</div>
+                        <p class="lede">
+                            I take AI from a whiteboard to production inside enterprise teams. I build
+                            <span class="mark">multi-agent systems across GCP and AWS</span> and run
+                            <span class="mark">open-source LLM inference</span> on GPUs we control, with vLLM and
+                            SGLang, so sensitive data never has to leave the building.
                         </p>
-                    </div>
-                    <div class="exp-item">
-                        <h3 class="exp-item-title">AI Researcher</h3>
-                        <div class="exp-item-meta">
-                            <span>📅 Aug 2025 – <i>Present</i></span>
-                            <span>� Yossi Labs</span>
-                            <span>📍 Worcester, MA</span>
+                        <p class="lede">
+                            I understand the whole inference stack, from how a model's weights fit on a GPU to how
+                            tokens are scheduled, cached and served. I also love talking with founders, builders and
+                            curious people about what's possible with AI.
+                            <span class="mark">If you have an idea you want to bounce around, I'm always up for a
+                                chat.</span>
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary">See my work</a>
+                            <a href="#contact" class="btn btn-ghost">Get in touch</a>
                         </div>
-                        <p class="exp-item-desc">Built an autonomous EDA agent using Google ADK and Gemini 2.5 Flash
-                            with a React + FastAPI stack. Optimized Mixture of Experts models in PyTorch to reduce
-                            energy consumption.</p>
                     </div>
-                    <div class="exp-item">
-                        <h3 class="exp-item-title">Teaching Assistant</h3>
-                        <div class="exp-item-meta">
-                            <span>📅 Aug 2024 – <i>Present</i></span>
-                            <span>🏫 Worcester Polytechnic Institute</span>
-                            <span>📍 Worcester, MA</span>
+                    <div class="hero-photo" style="background-image: url('assets/photo.jpg')" role="img"
+                        aria-label="Hemanth Vadlamani"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== ABOUT ====== -->
+        <section id="about">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">About</div>
+                    <h2>First principles, then results</h2>
+                </div>
+                <div class="about-grid reveal">
+                    <div>
+                        <p>As a forward deployed engineer I sit with the client, work out the real business problem,
+                            and then build the thing. Every engagement starts with discovery: what hurts, what it
+                            costs, and what a working proof of concept needs to show, before any architecture is drawn.
+                        </p>
+                        <p>I like going down to fundamentals. When a hospital client couldn't send PII to an external
+                            API, I learned how serving engines actually work and deployed Qwen and Gemma on a single GPU
+                            behind vLLM. When I wanted to cut AI's energy use, I started from what happens to each token
+                            during inference and tested Mixture of Experts against a dense model.</p>
+                        <p>I move fast, make calculated decisions, and put results before promises.</p>
+                    </div>
+                    <div class="facts">
+                        <div class="fact"><span>Role</span><b>AI Forward Deployed Engineer, Sails Software</b></div>
+                        <div class="fact"><span>Education</span><b>B.S. Computer Science &amp; Data Science, WPI
+                                (May 2026)</b></div>
+                        <div class="fact"><span>Honors</span><b>High Distinction · Upsilon Pi Epsilon · Dean's List</b>
                         </div>
-                        <p class="exp-item-desc">Supported students and graded coursework for Databases, Algorithms, and
-                            Data Structures.</p>
                     </div>
                 </div>
+                <div class="stats reveal">
+                    <div class="stat"><b>$3–4M</b><span>potential annual savings from invoice auditing</span></div>
+                    <div class="stat"><b>GCP + AWS</b><span>multi-cloud agent infrastructure</span></div>
+                    <div class="stat"><b>vLLM · SGLang</b><span>self-hosted open-source LLMs</span></div>
+                    <div class="stat"><b>3.9 GPA</b><span>B.S. CS &amp; Data Science, WPI</span></div>
+                </div>
             </div>
+        </section>
 
-            <!-- Education -->
-            <div class="exp-content" id="tab-education">
-                <div class="glow-card exp-card reveal highlight-card">
-                    <div class="exp-item">
-                        <h3 class="exp-item-title">Bachelor of Science in Computer and Data Science</h3>
-                        <div class="exp-item-meta">
-                            <span>📅 Aug 2023 – May 2026</span>
-                            <span>🏫 Worcester Polytechnic Institute</span>
+        <!-- ====== EXPERIENCE ====== -->
+        <section id="experience">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Experience</div>
+                    <h2>Where I've worked</h2>
+                    <p>Enterprise AI delivery, product engineering, and applied research.</p>
+                </div>
+
+                <div class="tabs reveal" role="tablist">
+                    <button class="tab active" data-tab="work" role="tab">Work</button>
+                    <button class="tab" data-tab="education" role="tab">Education</button>
+                    <button class="tab" data-tab="extracurricular" role="tab">Leadership</button>
+                </div>
+
+                <!-- Work -->
+                <div class="tab-panel active" id="tab-work">
+                    <div class="tl-item reveal">
+                        <div class="tl-date">Aug 2026 – Present</div>
+                        <div>
+                            <div class="tl-role">AI Forward Deployed Engineer</div>
+                            <div class="tl-org">Sails Software<span class="now">Current</span></div>
+                            <div class="tl-loc">Boston, MA</div>
+                            <ul class="tl-bullets">
+                                <li>Embed with enterprise clients to run discovery, frame the business problem, and ship
+                                    a proof of concept and architecture before committing to a build.</li>
+                                <li>Engineered and deployed multi-agent AI systems on Google Agent Development Kit
+                                    (ADK): a knowledge hub, freight consolidation, and invoice auditing, automating
+                                    complex workflows with <strong>$3–4M of potential annual savings</strong>.</li>
+                                <li>Architected end-to-end cloud infrastructure across GCP (Vertex AI, Cloud Run) and
+                                    AWS (Lambda, ECS) to host distributed backend microservices.</li>
+                                <li>Deployed self-hosted open-source LLMs (Qwen, Gemma) on GPU with vLLM and SGLang, so
+                                    PII-sensitive clients get production inference with no external cloud API
+                                    dependency.</li>
+                            </ul>
+                            <div class="chip-row">
+                                <span class="chip">Google ADK</span><span class="chip">Vertex AI</span><span
+                                    class="chip">Cloud Run</span><span class="chip">AWS Lambda</span><span
+                                    class="chip">AWS ECS</span><span class="chip">vLLM</span><span
+                                    class="chip">SGLang</span><span class="chip">Qwen</span><span
+                                    class="chip">Gemma</span>
+                            </div>
                         </div>
-                        <p class="exp-item-desc">Relevant
-                            coursework: ML Ops, Software Engineering,Data Structures & Algorithms, Big Data and
-                            Analytics, Database Systems</p>
                     </div>
-                </div>
-            </div>
 
-            <!-- Extracurricular -->
-            <div class="exp-content" id="tab-extracurricular">
-                <div class="glow-card exp-card reveal highlight-card">
-                    <div class="exp-item">
-                        <h3 class="exp-item-title">Upsilon Pi Epsilon — CS Honor Society</h3>
-                        <div class="exp-item-meta">
-                            <span>📅 Feb 2026 – Present</span>
-                            <span>🏫 Worcester Polytechnic Institute</span>
+                    <div class="tl-item reveal">
+                        <div class="tl-date">May 2025 – May 2026</div>
+                        <div>
+                            <div class="tl-role">Software Engineer Intern</div>
+                            <div class="tl-org">Forward Advantage</div>
+                            <div class="tl-loc">Fresno, CA · Remote</div>
+                            <ul class="tl-bullets">
+                                <li>Built features for Capture-It, a healthcare image capture and data management app,
+                                    using .NET Core and SQL, and wrote SQL to monitor processes and query the database.
+                                </li>
+                                <li>Designed and improved UI features that raised usability and user satisfaction.</li>
+                                <li>Wrote a script to analyze 10M+ healthcare files, detecting blank files and data
+                                    review issues while cutting runtime by 50%.</li>
+                            </ul>
+                            <div class="chip-row"><span class="chip">.NET</span><span class="chip">SQL</span><span
+                                    class="chip">Performance</span></div>
                         </div>
-                        <p class="exp-item-desc">Member of the Worcester Polytechnic Institute chapter of Upsilon Pi
-                            Epsilon, the national honor society for computer science and information technology
-                            majors.</p>
                     </div>
-                    <div class="exp-item">
-                        <h3 class="exp-item-title">South Asian Student Association</h3>
-                        <div class="exp-item-meta">
-                            <span>📅 Jan 2024 – Feb 2026</span>
-                            <span>🏫 Worcester Polytechnic Institute</span>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-date">Aug 2025 – May 2026</div>
+                        <div>
+                            <div class="tl-role">AI Researcher (Research Assistant)</div>
+                            <div class="tl-org">Yossi Labs</div>
+                            <div class="tl-loc">Worcester, MA</div>
+                            <ul class="tl-bullets">
+                                <li>Engineered an autonomous exploratory data analysis agent with Google ADK and Gemini
+                                    2.5 Flash, automating repetitive profiling and visualization workflows.</li>
+                                <li>Implemented and optimized a Mixture of Experts architecture in PyTorch, measured
+                                    with Zeus to minimize energy consumption.</li>
+                            </ul>
+                            <div class="chip-row"><span class="chip">Google ADK</span><span
+                                    class="chip">Gemini</span><span class="chip">PyTorch</span><span
+                                    class="chip">Mixture of Experts</span></div>
                         </div>
-                        <p class="exp-item-desc">Served in multiple leadership roles across the South Asian Student
-                            Association. Managed organizational finances as Treasurer, led outreach and event
-                            promotion as PR Coordinator, and oversaw operations and strategy as Vice President.</p>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-date">Aug 2024 – May 2026</div>
+                        <div>
+                            <div class="tl-role">Teaching Assistant</div>
+                            <div class="tl-org">Worcester Polytechnic Institute</div>
+                            <div class="tl-loc">Worcester, MA</div>
+                            <ul class="tl-bullets">
+                                <li>Supported students and graded coursework for Databases, Algorithms, and Data
+                                    Structures.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-date">Apr 2023 – May 2023</div>
+                        <div>
+                            <div class="tl-role">Software Engineer Intern</div>
+                            <div class="tl-org">ZoomInfo</div>
+                            <div class="tl-loc">Waltham, MA</div>
+                            <ul class="tl-bullets">
+                                <li>Built a retrieval-augmented generation (RAG) chatbot that retrieves and synthesizes
+                                    answers from ZoomInfo's FAQ documentation to automate customer support.</li>
+                                <li>Implemented text embedding pipelines, a vector store, and prompt management with
+                                    OpenAI, LangChain, and Python.</li>
+                            </ul>
+                            <div class="chip-row"><span class="chip">RAG</span><span class="chip">LangChain</span><span
+                                    class="chip">OpenAI</span><span class="chip">Vector store</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="tab-panel" id="tab-education">
+                    <div class="tl-item">
+                        <div class="tl-date">Aug 2023 – May 2026</div>
+                        <div>
+                            <div class="tl-role">B.S. in Computer Science &amp; Data Science</div>
+                            <div class="tl-org">Worcester Polytechnic Institute</div>
+                            <div class="tl-loc">GPA 3.9 · High Distinction · Completed in 3 years</div>
+                            <ul class="tl-bullets">
+                                <li>Dean's List 2023–2026 and Charles O. Thompson Scholar.</li>
+                                <li>Coursework: ML Ops, Machine Learning, Software Engineering, Algorithms and Data
+                                    Structures, Big Data Management, Databases, plus accelerated and 4000-level CS
+                                    courses.</li>
+                                <li>Research: DataWiz (agentic EDA, with Prof. Roee Shraga), MRI brain tumor detection
+                                    (with Prof. Ben), and energy-efficient Mixture of Experts inference (with Prof.
+                                    Kong).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership -->
+                <div class="tab-panel" id="tab-extracurricular">
+                    <div class="tl-item">
+                        <div class="tl-date">Feb 2026 – Present</div>
+                        <div>
+                            <div class="tl-role">Member</div>
+                            <div class="tl-org">Upsilon Pi Epsilon — CS Honor Society</div>
+                            <div class="tl-loc">Worcester Polytechnic Institute</div>
+                            <ul class="tl-bullets">
+                                <li>Inducted into the WPI chapter of the international honor society for computing and
+                                    information disciplines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-date">Jan 2024 – Feb 2026</div>
+                        <div>
+                            <div class="tl-role">Vice President · PR Coordinator · Treasurer</div>
+                            <div class="tl-org">South Asian Student Association</div>
+                            <div class="tl-loc">Worcester Polytechnic Institute</div>
+                            <ul class="tl-bullets">
+                                <li>Led operations and strategy as Vice President, managed finances as Treasurer, and
+                                    ran outreach and event promotion as PR Coordinator.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ====== PROJECTS — Alternating Layout ====== -->
-    <section class="projects section" id="projects">
-        <div class="container">
-            <h2 class="section-title reveal">Projects</h2>
-
-            <!-- Project 1: Image LEFT, Text RIGHT -->
-            <div class="project-row reveal">
-                <div class="project-image-wrapper">
-                    <div class="project-image-placeholder">🤖</div>
-                    <a href="https://github.com/hvadlamani1" target="_blank" rel="noopener" class="project-overlay">
-                        <span class="project-overlay-text">View Repo →</span>
-                    </a>
+        <!-- ====== INFERENCE ====== -->
+        <section class="inference" id="inference">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">AI Inference</div>
+                    <h2>The whole inference stack, not just the API call</h2>
+                    <p>Running open-source models yourself means owning every phase between a downloaded checkpoint
+                        and a reliable endpoint. This is how I think about it.</p>
                 </div>
-                <div class="project-info">
-                    <h3 class="project-info-title">EDA Agent</h3>
-                    <p class="project-info-desc">An Agentic-AI exploratory data analysis tool built with the Google ADK.
-                        Upload datasets and get instant insights, visualizations, and statistical summaries through
-                        natural language. Used React for the frontend and FastAPI for the backend.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Google ADK</span>
-                        <span class="project-tag">FastAPI</span>
-                        <span class="project-tag">React</span>
+
+                <div class="pipeline reveal">
+                    <div class="step">
+                        <h3>Select</h3>
+                        <p>Pick the right open model (Qwen, Gemma, Mistral, Llama) for the task, context length and
+                            license, and know when a Mixture of Experts model beats a dense one.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Fit</h3>
+                        <p>Size weights, KV cache and activations against GPU memory. Choose precision and
+                            quantization so the model fits a single GPU without wrecking quality.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Serve</h3>
+                        <p>Stand up vLLM or SGLang behind an OpenAI-compatible API on a client VM, with no external
+                            cloud dependency.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Optimize</h3>
+                        <p>Tune prefill vs. decode, continuous batching, prefix caching and concurrency for the latency
+                            and throughput the workload needs.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Operate</h3>
+                        <p>Containerize, deploy, monitor latency and GPU metrics, and wire the endpoint into agent
+                            systems on GCP and AWS.</p>
+                    </div>
+                </div>
+
+                <div class="callout reveal">
+                    <div>
+                        <h3>Why self-host</h3>
+                        <p>Hospital and enterprise data often can't leave the network. Self-hosted inference gives
+                            clients privacy, predictable cost, and control over the model, while agents still get a
+                            standard API to call.</p>
+                    </div>
+                    <div>
+                        <h3>Why efficiency matters</h3>
+                        <p>My research compared Mistral 8x7B (MoE) against Llama 70B. Activating only a subset of
+                            parameters per token cuts the compute and memory traffic behind each response, which is
+                            where inference energy goes.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Project 2: Text LEFT, Image RIGHT -->
-            <div class="project-row reverse reveal">
-                <div class="project-image-wrapper">
-                    <div class="project-image-placeholder">📋</div>
-                    <a href="https://github.com/hvadlamani1" target="_blank" rel="noopener" class="project-overlay">
-                        <span class="project-overlay-text">View Repo →</span>
-                    </a>
+        <!-- ====== PROJECTS ====== -->
+        <section id="projects">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Projects</div>
+                    <h2>Selected work</h2>
+                    <p>Starred projects are my newest and most AI-focused: production agent systems and inference
+                        deployments from Sails, plus research and tools I built on my own.</p>
                 </div>
-                <div class="project-info">
-                    <h3 class="project-info-title">Job Application Portal</h3>
-                    <p class="project-info-desc">A full-stack web application for managing job applications. Features
-                        real-time status tracking, resume uploads, and automated email notifications.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">React</span>
-                        <span class="project-tag">Node.js</span>
-                        <span class="project-tag">PostgreSQL</span>
-                        <span class="project-tag">AWS</span>
+
+                <div class="proj-grid reveal" id="proj-grid">
+                    <article class="proj-card featured">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+                            <span class="proj-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/></svg>Featured</span>
+                        </div>
+                        <div class="proj-tag">Agent Systems · Client work</div>
+                        <h3>Invoice Auditing Agent</h3>
+                        <p>Audits carrier invoices (FedEx and others) against agreed contracts and rate cards <em>before</em> they are paid, replacing a pay-first, audit-later process that was overpaying by $3–4M a year.</p>
+                        <div class="chip-row"><span class="chip">Google ADK</span><span class="chip">Multi-agent</span><span class="chip">GCP</span></div>
+                        <span class="proj-note">Client engagement · code is private</span>
+                    </article>
+
+                    <article class="proj-card featured">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+                            <span class="proj-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/></svg>Featured</span>
+                        </div>
+                        <div class="proj-tag">Inference &amp; Infra · Client work</div>
+                        <h3>Self-Hosted LLM for Healthcare</h3>
+                        <p>Deployed open-source models (Qwen, Gemma) on a single GPU in a client VM with vLLM, so hospital PII is never sent to an external cloud API.</p>
+                        <div class="chip-row"><span class="chip">vLLM</span><span class="chip">SGLang</span><span class="chip">GPU</span><span class="chip">Qwen</span><span class="chip">Gemma</span></div>
+                        <span class="proj-note">Client engagement · code is private</span>
+                    </article>
+
+                    <article class="proj-card featured">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                            <span class="proj-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/></svg>Featured</span>
+                        </div>
+                        <div class="proj-tag">Agent Systems · Client work</div>
+                        <h3>Freight Consolidation</h3>
+                        <p>Agents analyze open orders and recommend shipments to combine, with an approval queue so people stay in control of what actually goes out.</p>
+                        <div class="chip-row"><span class="chip">Google ADK</span><span class="chip">Optimization</span><span class="chip">Human-in-the-loop</span></div>
+                        <span class="proj-note">Client engagement · code is private</span>
+                    </article>
+
+                    <article class="proj-card featured">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                            <span class="proj-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/></svg>Featured</span>
+                        </div>
+                        <div class="proj-tag">Agent Systems · Client work</div>
+                        <h3>Knowledge Hub</h3>
+                        <p>A retrieval-backed assistant that answers employees' questions from internal documents, built as part of a multi-agent platform on GCP and AWS.</p>
+                        <div class="chip-row"><span class="chip">RAG</span><span class="chip">Google ADK</span><span class="chip">Vertex AI</span></div>
+                        <span class="proj-note">Client engagement · code is private</span>
+                    </article>
+
+                    <article class="proj-card featured">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                            <span class="proj-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/></svg>Featured</span>
+                        </div>
+                        <div class="proj-tag">Energy-Efficient AI · Research · Published</div>
+                        <h3>Inference Energy Efficiency (MQP)</h3>
+                        <p>Measured GPU energy per query for dense Llama vs. Mixtral 8x7B Mixture of Experts, and built a dashboard with a Gemini-powered efficiency consultant agent on top. Published to the WPI Research Collection.</p>
+                        <div class="chip-row"><span class="chip">PyTorch</span><span class="chip">Zeus</span><span class="chip">MoE</span><span class="chip">FastAPI</span><span class="chip">React</span></div>
+                        <a class="proj-link" href="https://github.com/hvadlamani1/mqpReportSub" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
+
+                    <article class="proj-card featured">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7l8 1M7.5 8l3 8M16.5 10l-3 6"/></svg></div>
+                            <span class="proj-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/></svg>Featured</span>
+                        </div>
+                        <div class="proj-tag">Agent Systems · Side project</div>
+                        <h3>GitHub Knowledge Graph Agent</h3>
+                        <p>Builds a knowledge graph of any GitHub repository and lets you query it in natural language, with a D3 dashboard, streaming chat and agent tracing in Arize Phoenix.</p>
+                        <div class="chip-row"><span class="chip">Google ADK</span><span class="chip">Gemini 2.5 Flash</span><span class="chip">FastAPI</span><span class="chip">Phoenix</span></div>
+                        <span class="proj-note">Private repository</span>
+                    </article>
+
+                    <article class="proj-card featured">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div>
+                            <span class="proj-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/></svg>Featured</span>
+                        </div>
+                        <div class="proj-tag">AI Developer Tools · Side project</div>
+                        <h3>burnrate</h3>
+                        <p>A personal daemon that queues tasks and, the moment a Claude Code session window resets, launches agents in isolated git worktrees that each end in a pushed branch and draft PR.</p>
+                        <div class="chip-row"><span class="chip">Go</span><span class="chip">Claude Code</span><span class="chip">Git worktrees</span></div>
+                        <span class="proj-note">Private repository</span>
+                    </article>
+
+                    <article class="proj-card">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">Agent Systems · Research · Published</div>
+                        <h3>DataWiz: Agentic EDA</h3>
+                        <p>An agentic framework that does exploratory data analysis from natural language, replacing the tedious multi-query loop. Built with Google ADK and Gemini, React and FastAPI. Published as a demo paper.</p>
+                        <div class="chip-row"><span class="chip">Python</span><span class="chip">Google ADK</span><span class="chip">FastAPI</span><span class="chip">React</span></div>
+                        
+                    </article>
+
+                    <article class="proj-card">
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">Inference &amp; Infra · Course project</div>
+                        <h3>ATC Audio Translation Tool</h3>
+                        <p>Turns air traffic control audio into plain English. One GitHub Actions pipeline ships the FastAPI backend to GCP Cloud Run, AWS Fargate and Azure Container Apps, with Prometheus and Grafana for latency and hardware metrics.</p>
+                        <div class="chip-row"><span class="chip">PyTorch</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">Grafana</span></div>
+                        <a class="proj-link" href="https://github.com/hvadlamani1/CaseStudy3_MLops" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
+
+                    <article class="proj-card more" hidden>
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 5 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/><path d="M15 3a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 5"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">Agent Systems · Course project</div>
+                        <h3>DSPy Agents</h3>
+                        <p>An airline service agent with MLflow tracing and a RAG agent whose accuracy rose 74% through DSPy's automatic optimization instead of hand-tuned prompts. Built during the DeepLearning.AI DSPy course.</p>
+                        <div class="chip-row"><span class="chip">DSPy</span><span class="chip">MLflow</span><span class="chip">RAG</span></div>
+                        <a class="proj-link" href="https://github.com/hvadlamani1/Agents_DSPY" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
+
+                    <article class="proj-card more" hidden>
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">ML · Healthcare · Research · Published</div>
+                        <h3>MRI Brain Tumor Detection</h3>
+                        <p>A machine learning model that detects brain tumors from MRI images, iterated with faculty guidance and published in the WPI research collection.</p>
+                        <div class="chip-row"><span class="chip">Python</span><span class="chip">Deep learning</span></div>
+                        
+                    </article>
+
+                    <article class="proj-card more" hidden>
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">Computer Vision · Side project</div>
+                        <h3>Landscaping AI</h3>
+                        <p>Estimates landscaping jobs using semantic segmentation from Meta's SAM and Google Earth Engine, with AgentQL scraping local pricing data.</p>
+                        <div class="chip-row"><span class="chip">SAM</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">AgentQL</span></div>
+                        <a class="proj-link" href="https://github.com/hvadlamani1/Landscaping_AI" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
+
+                    <article class="proj-card more" hidden>
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">Full-stack · Side project</div>
+                        <h3>Job Application Portal</h3>
+                        <p>Application tracking with JWT authentication and role-based access control across the stack, containerized with Docker on AWS ECS.</p>
+                        <div class="chip-row"><span class="chip">Flask</span><span class="chip">JavaScript</span><span class="chip">JWT / RBAC</span><span class="chip">AWS ECS</span></div>
+                        <a class="proj-link" href="https://github.com/hvadlamani1/JobApplicationPortal" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
+
+                    <article class="proj-card more" hidden>
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 16-9 17z"/><path d="M4 21c3-6 6-9 11-12"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">Full-stack · Hackathon</div>
+                        <h3>SmartFarm</h3>
+                        <p>A marketplace connecting local farmers directly with consumers, with produce tracking and a donation flow for excess food. Built for SharkHack 2025.</p>
+                        <div class="chip-row"><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Marketplace</span></div>
+                        <a class="proj-link" href="https://github.com/hvadlamani1/sharkhack2025" target="_blank" rel="noopener">View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                    </article>
+
+                    <article class="proj-card more" hidden>
+                        <div class="proj-top">
+                            <div class="proj-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0"/></svg></div>
+                            
+                        </div>
+                        <div class="proj-tag">Big Data · Coursework</div>
+                        <h3>Social Network Analytics Pipeline</h3>
+                        <p>Processed large-scale social network data with Hadoop and MapReduce, using Pig scripts for ETL to run graph analytics, trend detection and user behavior analysis on millions of records.</p>
+                        <div class="chip-row"><span class="chip">Hadoop</span><span class="chip">MapReduce</span><span class="chip">Pig</span><span class="chip">HDFS</span></div>
+                        
+                    </article>
+                </div>
+
+                <div class="more-wrap reveal">
+                    <button class="btn btn-ghost" id="proj-more" type="button" aria-expanded="false"
+                        data-count="6">Show 6 more projects</button>
+                    <a class="btn btn-ghost" href="https://github.com/hvadlamani1" target="_blank" rel="noopener">All
+                        repos on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== CONTENT ====== -->
+        <section class="content-teaser" id="content">
+            <div class="wrap">
+                <div class="teaser reveal">
+                    <div>
+                        <div class="eyebrow">My content</div>
+                        <h2>Dr. Percent: get 1% better</h2>
+                        <p>Outside of work I run <strong>@drpercent</strong> on Instagram, short videos about life and
+                            tech: daily challenges, money, habits, and the small things that compound. It's where I
+                            practice explaining ideas simply and putting myself out there.</p>
+                        <div class="hero-actions">
+                            <a href="content.html" class="btn btn-primary">Watch my videos</a>
+                            <a href="https://www.instagram.com/drpercent/" target="_blank" rel="noopener"
+                                class="btn btn-ghost">Follow @drpercent <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="teaser-mark" aria-hidden="true">1%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SKILLS ====== -->
+        <section id="skills">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div class="eyebrow">Skills</div>
+                    <h2>Tools I work with</h2>
+                </div>
+                <div class="skills-grid reveal">
+                    <div class="skill-cat">
+                        <h3>AI Agents &amp; Frameworks</h3>
+                        <div class="chip-row"><span class="chip">Google ADK</span><span class="chip">LangGraph</span><span
+                                class="chip">Crew AI</span><span class="chip">MCP</span><span class="chip">A2A</span><span
+                                class="chip">RAG</span><span class="chip">Observability</span></div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3>Inference &amp; Serving</h3>
+                        <div class="chip-row"><span class="chip">vLLM</span><span class="chip">SGLang</span><span
+                                class="chip">Open-source LLMs</span><span class="chip">GPU deployment</span><span
+                                class="chip">ML Ops</span></div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3>Cloud &amp; DevOps</h3>
+                        <div class="chip-row"><span class="chip">GCP (Vertex AI, Cloud Run)</span><span class="chip">AWS
+                                (Lambda, ECS)</span><span class="chip">Azure</span><span class="chip">Docker</span><span
+                                class="chip">Kubernetes</span><span class="chip">GitHub Actions</span></div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3>ML &amp; Data</h3>
+                        <div class="chip-row"><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span
+                                class="chip">Scikit-learn</span><span class="chip">NumPy</span><span
+                                class="chip">Pandas</span><span class="chip">PySpark</span></div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3>Languages</h3>
+                        <div class="chip-row"><span class="chip">Python</span><span class="chip">TypeScript</span><span
+                                class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">C++</span><span
+                                class="chip">C#</span><span class="chip">SQL</span><span class="chip">R</span></div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3>Web &amp; Databases</h3>
+                        <div class="chip-row"><span class="chip">React</span><span class="chip">Angular</span><span
+                                class="chip">.NET</span><span class="chip">Spring</span><span class="chip">REST APIs</span><span
+                                class="chip">PostgreSQL</span><span class="chip">MySQL</span><span
+                                class="chip">MongoDB</span><span class="chip">Oracle</span><span
+                                class="chip">Hadoop/Hive</span></div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Project 3: Image LEFT, Text RIGHT -->
-            <div class="project-row reveal">
-                <div class="project-image-wrapper">
-                    <div class="project-image-placeholder">📊</div>
-                    <a href="https://github.com/hvadlamani1" target="_blank" rel="noopener" class="project-overlay">
-                        <span class="project-overlay-text">View Repo →</span>
-                    </a>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-info-title">Landscaping AI</h3>
-                    <p class="project-info-desc">A app to get estimates for landscaping work using Semantic Segmentation
-                        from Meta's SAM model and Google Earth Engine. Built on top of React and FastAPI. Used AgentQL
-                        to
-                        web scrape for local pricing data.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">FastAPI</span>
-                        <span class="project-tag">React</span>
-                        <span class="project-tag">Web Scraping</span>
+        <!-- ====== CONTACT ====== -->
+        <section id="contact">
+            <div class="wrap">
+                <div class="contact-box reveal">
+                    <div>
+                        <h2>Let's talk</h2>
+                        <p>Building a startup, exploring an idea, or just curious about AI? I'd love to hear about it.
+                            I'm happy to chat about agent systems, self-hosted inference, getting AI into production,
+                            or anything interesting you're working on.</p>
+                    </div>
+                    <div class="contact-actions">
+                        <a href="mailto:hvadlamani253@outlook.com" class="btn btn-primary">hvadlamani253@outlook.com</a>
+                        <div class="social-row">
+                            <a href="https://github.com/hvadlamani1" target="_blank" rel="noopener"
+                                aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                </svg></a>
+                            <a href="https://linkedin.com/in/hemanth-vadlamani/" target="_blank" rel="noopener"
+                                aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                    <rect x="2" y="9" width="4" height="12" />
+                                    <circle cx="4" cy="4" r="2" />
+                                </svg></a>
+                            <a href="https://x.com/Hemu52095342" target="_blank" rel="noopener"
+                                aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                                    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                                </svg></a>
+                            <a href="mailto:hvadlamani253@outlook.com" aria-label="Email"><svg viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                </svg></a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Project 4: Text LEFT, Image RIGHT -->
-            <div class="project-row reverse reveal">
-                <div class="project-image-wrapper">
-                    <div class="project-image-placeholder">🌐</div>
-                    <a href="https://github.com/hvadlamani1" target="_blank" rel="noopener" class="project-overlay">
-                        <span class="project-overlay-text">View Repo →</span>
-                    </a>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-info-title">Social Network Analytics Pipeline</h3>
-                    <p class="project-info-desc">A big data analytics pipeline for processing large-scale social media
-                        network data using Hadoop and MapReduce. Performed graph analytics, trend detection, and user
-                        behavior analysis on millions of records using PIG scripts for ETL and aggregation.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Hadoop</span>
-                        <span class="project-tag">MapReduce</span>
-                        <span class="project-tag">PIG</span>
-                        <span class="project-tag">HDFS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== SKILLS — Two-column Cards ====== -->
-    <section class="skills section" id="skills">
-        <div class="container">
-            <h2 class="section-title reveal">Skills</h2>
-
-            <div class="skills-grid reveal">
-                <!-- Left: Skills list -->
-                <div class="glow-card skills-list-card">
-                    <div class="skills-category">
-                        <h3 class="skills-category-title">Languages</h3>
-                        <p class="skills-category-items">Python, JavaScript, TypeScript, Java, SQL, C++</p>
-                    </div>
-                    <div class="skills-category">
-                        <h3 class="skills-category-title">Frameworks</h3>
-                        <p class="skills-category-items">React, Node.js, Flask, Streamlit, Next.js</p>
-                    </div>
-                    <div class="skills-category">
-                        <h3 class="skills-category-title">Tools</h3>
-                        <p class="skills-category-items">Git, GitHub, Docker, AWS, PostgreSQL, MongoDB</p>
-                    </div>
-                </div>
-
-                <!-- Right: About + Resume -->
-                <div class="glow-card skills-about-card">
-                    <div class="skills-about-text">
-                        <p>I build full-stack web applications and data-driven solutions. My experience spans from
-                            interactive frontends to scalable backend services and ML pipelines.</p>
-                        <p>Other projects I work on include AI agents, data analysis tools, and automation scripts.</p>
-                    </div>
-                    <a href="assets/resume.pdf" target="_blank" class="btn-resume">View Resume</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== CONTACT — Centered Card ====== -->
-    <section class="contact section" id="contact">
-        <div class="container">
-            <div class="glow-card contact-card reveal">
-                <div class="contact-avatar" style="background-image: url('assets/photo.jpg')" role="img"
-                    aria-label="Hemanth Vadlamani"></div>
-                <h2 class="contact-name">Hemanth Vadlamani</h2>
-                <p class="contact-tagline">Software Engineer & Data Scientist</p>
-
-                <div class="contact-info">
-                    <div class="contact-email">
-                        <div class="contact-email-label">Email me at:</div>
-                        <a href="mailto:hvadlamani253@outlook.com"
-                            class="contact-email-address">hvadlamani253@outlook.com</a>
-                    </div>
-                    <div class="contact-separator"></div>
-                    <div class="contact-socials">
-                        <a href="https://github.com/hvadlamani1" target="_blank" rel="noopener" class="social-icon"
-                            aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com/in/hemanth-vadlamani/" target="_blank" rel="noopener"
-                            class="social-icon" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                <rect x="2" y="9" width="4" height="12" />
-                                <circle cx="4" cy="4" r="2" />
-                            </svg>
-                        </a>
-                        <a href="https://x.com/" target="_blank" rel="noopener" class="social-icon"
-                            aria-label="X / Twitter">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                            </svg>
-                        </a>
-                        <a href="mailto:hvadlamani253@outlook.com" class="social-icon" aria-label="Email">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="4" width="20" height="16" rx="2" />
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ====== FOOTER ====== -->
-    <footer class="footer">
-        <div class="container">
-            <p>Copyright &copy; 2026 Hemu Vadlamani. All Rights Reserved.</p>
+    <footer>
+        <div class="wrap footer-inner">
+            <span>&copy; <span id="year">2026</span> Hemanth Vadlamani. All rights reserved.</span>
+            <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
         </div>
     </footer>
-
-    <!-- Animated grid canvas -->
-    <canvas id="grid-canvas"></canvas>
 
     <script src="script.js"></script>
 </body>
