@@ -352,7 +352,7 @@ async function send(text) {
 
   if (!CHAT_STATE.pool.length && !CHAT_CONFIG.fallbackModels.length) {
     addMessage('user', text);
-    addMessage('bot', 'No free model is available right now. Please try again shortly.');
+    addMessage('bot', 'Something went wrong. Please try again in a moment.');
     return;
   }
 
@@ -376,13 +376,11 @@ async function send(text) {
         ? tidy(reply) + ' (reply was cut off — try asking again)'
         : tidy(reply));
     } else {
-      addMessage('bot',
-        'No free model could answer just now — they are rate limited. ' +
-        'Please try again in a moment.');
+      addMessage('bot', 'Something went wrong. Please try again in a moment.');
     }
   } catch (e) {
     pending.remove();
-    addMessage('bot', 'Something went wrong reaching the assistant. Please try again.');
+    addMessage('bot', 'Something went wrong. Please try again in a moment.');
   } finally {
     setBusy(false);
     document.getElementById('chat-text')?.focus();
